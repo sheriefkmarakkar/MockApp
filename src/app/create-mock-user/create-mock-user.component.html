@@ -1,0 +1,35 @@
+<h4>Create Mock User</h4>
+<form [formGroup]="createForm" (ngSubmit)='onSubmit()'>
+    <input type="text" placeholder="User Name" class="form-control" formControlName="username" [ngClass]="{'is-invalid':sub&&f.username.errors}">
+    <div *ngIf="sub&&f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">User name is required</div>
+    </div>
+    <input type="text" placeholder="Email" class="form-control" [ngClass]="{'is-invalid':sub&&f.email.errors}" formControlName="email">
+    <div *ngIf="sub&&f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Invalid Email</div>
+
+    </div>
+    <input type="text" placeholder="Phone" class="form-control" [ngClass]="{'is-invalid':sub&&f.phone.errors}" formControlName="phone">
+    <div *ngIf="sub&&f.phone.errors" class="invalid-feedback">
+        <div *ngIf="f.phone.errors.required">Phone Number is required</div>
+        <div *ngIf="f.phone.errors.pattern">Invalid Phone Number</div>
+    </div>
+    <label>Gender :
+        <input type="radio" value="M" formControlName="gender">
+          <span>male</span>
+      </label>
+      <label>
+        <input type="radio" value="F" formControlName="gender">
+          <span>female</span>
+      </label>
+      <div *ngIf="sub&&f.gender.errors" class="invalid-feedback">
+        <div *ngIf="f.gender.errors.required">Gender is required</div>
+    </div>
+    <input type="text" placeholder="Age" class="form-control" formControlName="age">
+    <div *ngIf="sub&&f.age.errors" class="invalid-feedback">
+        <div *ngIf="f.age.errors.required">Age is required</div>
+        <div *ngIf="f.age.errors.pattern">Invalid Age</div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
